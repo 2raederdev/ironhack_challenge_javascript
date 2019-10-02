@@ -68,6 +68,27 @@ function moveForward(rover){
     console.log(`${rover.x},${rover.y}`);
 }
 
+function moveBackward(rover){
+  console.log("moveBackward was called");
+  switch(rover.direction) {
+    case 'N':
+      rover.y++
+      break;
+    case 'E':
+      rover.x--
+      break;
+    case 'S':
+      rover.y--
+      break;
+    case 'W':
+      rover.x++
+      break;
+  };
+    rover.travelLog.push([rover.x,rover.y]);
+    console.log(`${rover.x},${rover.y}`);
+}
+
+
 function roverPossibleCommands(commands) {
   let move = Array.from(commands)
   
@@ -82,9 +103,16 @@ function roverPossibleCommands(commands) {
       case 'r':
         turnRight(rover);
         break;
+      case 'b':
+      moveBackward(rover);
+      break;
+      default:
+      console.log(`${i} isn't valid. Choose one of the following commands: (r)ight, (l)eft, (f)orward and (b)ackward"`)
     }
   }
 }
+
+let str = "rffrfflfrff";
 
 function entireTracking(rover) {
   console.log(`All the movements made by Rover are ${rover.travelLog}`);
