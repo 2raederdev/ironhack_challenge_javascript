@@ -7,11 +7,11 @@ let rover = {
 };
 
 
-let rover = {
-	direction: 'N',
-  x: 0,
-  y: 0,
-  travelLog: [0,0] 
+let roverDos = {
+	direction: 'S',
+  x: 2,
+  y: 2,
+  travelLog: [2, 2] 
 };
 
 const map = [
