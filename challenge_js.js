@@ -6,17 +6,25 @@ let rover = {
   travelLog: [0,0] 
 };
 
+
+let rover = {
+	direction: 'N',
+  x: 0,
+  y: 0,
+  travelLog: [0,0] 
+};
+
 const map = [
     [ 0, 0, 0, 0, 0, 1, 0, 0, 0, 0 ],
     [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
-    [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 ],
+    [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
     [ 1, 0, 0, 0, 0, 0, 0, 0, 1, 0 ],
-    [ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0 ],
-    [ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0 ],
-    [ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 ],
+    [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
     [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 ],
     [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
-    [ 0, 1, 0, 0, 1, 0, 0, 0, 1, 0 ],
+    [ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 ],
     [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
 ];
 
@@ -40,9 +48,6 @@ function turnLeft(rover){
   console.log("Rover Direction: " + rover.direction);
 }
 
-turnLeft(rover);
-
-
 function turnRight(rover){
    switch(rover.direction) {
     case 'N':
@@ -61,33 +66,33 @@ function turnRight(rover){
     console.log("Rover Direction: " + rover.direction);
 }
 
-const error = "Achtung! The rover is not allowed to leave the map";
+const error = "Achtung! This move is not allowed";
 
 function moveForward(rover){
   switch(rover.direction) {
     case 'N':
-      if (rover.y === 0) {
+      if (rover.y === 0 && map[x][y] !== 0) {
         console.log(error);
       } else {
         rover.y--
         }
       break;
     case 'E':
-      if (rover.x === map.length-1) {
+      if (rover.x === map.length-1 && map[x][y] !== 0) {
         console.log(error);
       } else {
         rover.x++
         }
       break;
     case 'S':
-      if (rover.y === map.length-1) {
+      if (rover.y === map.length-1 && map[x][y] !== 0) {
         console.log(error);
       } else {
         rover.y++
       }
       break;
     case 'W':
-      if (rover.x === 0) {
+      if (rover.x === 0 && map[x][y] !== 0) {
         console.log(error);
       }
       rover.x--
@@ -100,28 +105,28 @@ function moveForward(rover){
 function moveBackward(rover){
   switch(rover.direction) {
     case 'N':
-      if (rover.y === map.length-1) {
+      if (rover.y === map.length-1 && map[x][y] !== 0) {
         console.log(error);
       } else {
         rover.y++
         }
       break;
     case 'E':
-      if (rover.x === 0) {
+      if (rover.x === 0 && map[x][y] !== 0) {
         console.log(error);
       } else {
         rover.x--
         }
       break;
     case 'S':
-      if (rover.y === 0) {
+      if (rover.y === 0 && map[x][y] !== 0) {
       console.log(error);
     } else {
       rover.y--
       }
       break;
     case 'W':
-      if (rover.x === map.length-1) {
+      if (rover.x === map.length-1 && map[x][y] !== 0) {
         console.log(error);
       } else {
         rover.x++
