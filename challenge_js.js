@@ -168,7 +168,7 @@ function roverPossibleCommands(commands) {
   }
 }
 
-function entireTracking(roverDos) {
+function entireTracking(rover) {
   console.log(`All the movements made by Rover are ${rover.travelLog}`);
 }
 
