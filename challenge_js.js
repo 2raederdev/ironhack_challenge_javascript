@@ -1,20 +1,27 @@
+// Create an object to represent the rover. This object will have only one property for now: the direction.The rover's default direction will be "N" (as North).
 
 let rover = {
 	direction: 'N',
   x: 0,
   y: 0,
-  travelLog: [0,0] 
+  travelLog: [0,0],
+  name: 'A'
+  
 };
-
 
 let roverDos = {
 	direction: 'S',
   x: 2,
   y: 2,
-  travelLog: [2, 2] 
+  travelLog: [2, 2],
+  name: 'B'
 };
 
-const map = [
+let str = "rffrfflfrff";
+
+const error = "Achtung! This move is not allowed";
+
+let map = [
     [ 0, 0, 0, 0, 0, 1, 0, 0, 0, 0 ],
     [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
     [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
@@ -28,7 +35,7 @@ const map = [
     [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
 ];
 
-
+//Turning the Rover to the left
 
 function turnLeft(rover){
   switch(rover.direction) {
@@ -48,25 +55,26 @@ function turnLeft(rover){
   console.log("Rover Direction: " + rover.direction);
 }
 
+//Turning the Rover to the right
+
 function turnRight(rover){
    switch(rover.direction) {
     case 'N':
-      jeeprover.direction = 'E';
+      rover.direction = 'E';
       break;
     case 'E':
-      jeeprover.direction = 'S';
+      rover.direction = 'S';
       break;
     case 'S':
-      jeeprover.direction = 'W';
+      rover.direction = 'W';
       break;
     case 'W':
-      jeeprover.direction = 'N';
+      rover.direction = 'N';
       break;
   };
     console.log("Rover Direction: " + rover.direction);
 }
 
-const error = "Achtung! This move is not allowed";
 
 function moveForward(rover){
   switch(rover.direction) {
@@ -99,7 +107,7 @@ function moveForward(rover){
       break;
   };
     rover.travelLog.push([rover.x,rover.y]);
-    console.log(`${rover.x},${rover.y}`);
+    console.log(`The new position of the rover is x:${rover.x},y=${rover.y}.`);
 }
 
 function moveBackward(rover){
@@ -134,14 +142,14 @@ function moveBackward(rover){
       break;
   };
     rover.travelLog.push([rover.x,rover.y]);
-    console.log(`${rover.x},${rover.y}`);
+    console.log(`The new position of the rover is x:${rover.x},y=${rover.y}.`);
 }
 
 function roverPossibleCommands(commands) {
   let move = Array.from(commands)
   
-  for (let i = 0 ; i < commands.length ; i++) {
-    switch(rover.direction) {
+  for (let i = 0 ; i < move.length ; i++) {
+    switch(move[i]) {
       case 'f':
         moveForward(rover);
         break;
@@ -160,8 +168,8 @@ function roverPossibleCommands(commands) {
   }
 }
 
-let str = "rffrfflfrff";
-
-function entireTracking(rover) {
+function entireTracking(roverDos) {
   console.log(`All the movements made by Rover are ${rover.travelLog}`);
 }
+
+roverPossibleCommands(str);
